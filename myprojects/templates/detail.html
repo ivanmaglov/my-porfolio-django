@@ -1,0 +1,27 @@
+{% extends 'singlepage.html'   %}
+
+
+{% block content%}
+
+<div  class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4 center text-center">{{ projects.title }}</h1>
+      <img class="img rounded mx-auto d-block" src="{{ projects.picture.url }}" width="450" height="290"  />
+ <div>
+
+
+
+     </div>
+    <p class="lead">{{ projects.description| safe }}</p>
+      <p class="lead">Programing Languages: {{ projects.programming_language }}</p>
+        <p class="lead">Framework: {{ projects.framework }}</p>
+
+              <a href="{{ projects.link }}"/><button type="button" class="btn btn-primary btn-block" >Download: </button></a>
+
+  </div>
+</div>
+
+
+{% endblock %}
+
+ <img src="{{ projects.picture.url  }}"   class="img-thumbnail" >

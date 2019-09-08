@@ -1,0 +1,51 @@
+{% extends 'singlepage.html'   %}
+
+
+{% block content %}
+
+
+
+   <main role="main">
+        <div class="container">
+        <h1 class="text-center pt-3">Welcome to Ivan's Blog</h1>
+        <br />
+        <br />
+        <h2>Latest Posts</h2>
+
+            <hr />
+            {% for blog in blogs  %}
+
+            <a  href="{% url 'blogdetail' blog.id %}" ><h3>{{ blog.title }}</h3></a>
+                <p>  {{ blog.pub_date_petty }}</p>
+
+            <img  class="img-fluid" src="{{ blog.image.url }}" height=400 width=400 />
+             <br />
+            <p> {{ blog.summary| safe }}</p>
+
+          <a  href="{% url 'blogdetail' blog.id %}" ></a>
+            <button onclick="window.location='{% url 'blogdetail' blog.id %}';" style="cursor:pointer;"
+                             type="button" class="btn btn-info" >Read more:  </button>
+
+            {% endfor %}
+      </div>
+  <div class="pagination container">
+    <span class="step-links">
+        {% if blogs.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ blogs.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ blogs.number }} of {{ blogs.paginator.num_pages }}.
+        </span>
+
+        {% if blogs.has_next %}
+            <a href="?page={{ blogs.next_page_number }}">next</a>
+            <a href="?page={{ blogs.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+   </main>
+
+{% endblock %}

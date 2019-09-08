@@ -1,0 +1,18 @@
+{% extends 'singlepage.html'   %}
+
+
+{% block content %}
+
+<div class="container">
+
+           <h1 class="text-center pt-3">{{ blog.title }}</h1>
+            <p class="text-center">{{ blog.pub_date_petty  }}</p>
+           <img class="img rounded mx-auto d-block" src="{{ blog.image.url }}" />
+             <br />
+             <br />
+            <p class="text-center card-text">{{ blog.post | safe  }}</p>
+
+      </div>
+
+
+{% endblock %}
